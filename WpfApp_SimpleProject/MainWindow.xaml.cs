@@ -24,5 +24,10 @@ namespace WpfApp_SimpleProject
         {
             InitializeComponent();
         }
+
+        private void MenuItem_Exit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
