@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp_SimpleProject.Commons;
 
 namespace WpfApp_SimpleProject
 {
@@ -20,12 +21,22 @@ namespace WpfApp_SimpleProject
     /// </summary>
     public partial class MainWindow : Window
     {
+        private CurrencyConverter _currencyConverter;
         public MainWindow()
         {
+            _currencyConverter = new CurrencyConverter();
             InitializeComponent();
+
+
+            //var href = _currencyConverter.BankHrefApi;
         }
 
         private void MenuItem_Exit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
 
         }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp_SimpleProject"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Конвертер Валют" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"></RowDefinition>
@@ -21,7 +21,13 @@
             <MenuItem Header="Help"></MenuItem>
         </Menu>
         <Grid Grid.Row="1">
-            
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Suma: " VerticalAlignment="Center" Margin="5" />
+                <TextBox x:Name="TextBox_Amount" Width="100" Margin="5" />
+                <TextBlock Text="Currency: " VerticalAlignment="Center" Margin="5"/>
+                <ComboBox x:Name="ComboBox_Currency" Width="150" Margin="5" />
+                <Button Content="Convert" Click="Button_Click" Margin="10" />
+            </StackPanel>
         </Grid>
         <StatusBar Grid.Row="2" Grid.Column="0">
             <StatusBarItem>
