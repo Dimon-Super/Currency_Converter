@@ -21,14 +21,7 @@
             <MenuItem Header="Help"></MenuItem>
         </Menu>
 
-        <ListView x:Name="ListView_Currencies" Grid.Row="1" Margin="10">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Currency" Width="120" DisplayMemberBinding="{Binding cc}" />
-                    <GridViewColumn Header="Exchange Rate" Width="120" DisplayMemberBinding="{Binding rate}" />
-                </GridView>
-            </ListView.View>
-        </ListView>
+        
         
         <Grid Grid.Row="1">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
