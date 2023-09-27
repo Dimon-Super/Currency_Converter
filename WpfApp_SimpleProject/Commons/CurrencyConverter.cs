@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Collections.ObjectModel;
 
+
 namespace WpfApp_SimpleProject.Commons
 {
     public class CurrencyConverter//буде хранити силку наших валют та самі валюти
@@ -14,7 +15,7 @@ namespace WpfApp_SimpleProject.Commons
         private string _href = "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?date=";
         private string _fullHref = String.Empty;
         private DateTime _date;
-        public ObservableCollection<Currency> Currencies { get; private set; }
+        public List<Currency> Currencies { get; private set; }
 
         public CurrencyConverter()//собираємо конструктор та получати текущую дату
         {
@@ -44,8 +45,8 @@ namespace WpfApp_SimpleProject.Commons
             WebClient client = new WebClient();
             client.Encoding = Encoding.UTF8;
             string currenciesJSONResponse = client.DownloadString(_fullHref);
-
-            Console.WriteLine(currenciesJSONResponse);
+            var currencies = System.Text.Json.JsonSerializer.Deserialize<List<Currency>>(currenciesJSONResponse);
+            Currencies = currencies;
         }
     }
 }

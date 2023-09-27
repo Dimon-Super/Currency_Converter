@@ -28,17 +28,49 @@ namespace WpfApp_SimpleProject
             InitializeComponent();
 
 
-            //var href = _currencyConverter.BankHrefApi;
+            if(_currencyConverter.Currencies != null)
+            {
+                foreach(var currency in _currencyConverter.Currencies)
+                {
+                    ComboBox_Currency.Items.Add(currency.cc);
+                }
+            }
         }
 
         private void MenuItem_Exit_Click(object sender, RoutedEventArgs e)
         {
-
+            Application.Current.Shutdown();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            string selectedCurrency = ComboBox_Currency.SelectedItem as string;
+            double amount;
 
+            if (double.TryParse(TextBox_Amount.Text, out amount))
+            {
+                double convertedAmount = ConvertCurrency(selectedCurrency, amount);
+                Label_StatusStripItem.Content = $"{amount} {selectedCurrency} = {convertedAmount} UAH";
+            }
+            else
+            {
+                Label_StatusStripItem.Content = "Invalid amount entered.";
+            }
+        }
+
+        private double ConvertCurrency(string targetCurrency, double amount)
+        {
+            if (_currencyConverter.Currencies != null)
+            {
+                foreach (var currency in _currencyConverter.Currencies)
+                {
+                    if (currency.cc == targetCurrency)
+                    {
+                        return amount * currency.rate;
+                    }
+                }
+            }
+            return 0.0;
         }
     }
 }
